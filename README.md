@@ -1,9 +1,24 @@
-# Ng2RestApp
+# ng2-rest-app
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.16.
+A REST-ful master-detail application built using Angular 2 and angular-cli.
 
-## Development server
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Dependencies
+- You must have `node v >= 4.0` and `npm v >= 3` installed (via `brew install node` or [NodeJS.org](https://nodejs.org/en/));
+
+### Getting Started
+
+There are two main parts to this application. The first is the REST API, for which we are using `json-server`. The second part is the Angular 2 application server which we will start using `ng serve`.  
+
+To get started run the commands below.
+
+```bash
+$ git clone https://github.com/onehungrymind/ng2-rest-app.git
+$ cd ng2-rest-app
+$ npm install
+$ npm start
+```
+
+Then navigate to [http://localhost:4200](http://localhost:4200/#/items) in your browser.
 
 ## Code scaffolding
 
@@ -22,10 +37,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/). 
 Before running the tests make sure you are serving the app via `ng serve`.
 
-## Deploying to Github Pages
-
-Run `ng github-pages:deploy` to deploy to Github Pages.
-
-## Further help
-
-To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
