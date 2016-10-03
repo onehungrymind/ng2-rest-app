@@ -1,35 +1,12 @@
-import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
-import {ItemsService, Item} from './items.service';
-import {ItemsList} from './items-list.component';
-import {ItemDetail} from './item-detail.component';
+import { Component, OnInit } from '@angular/core';
+import {ItemsService, Item} from '../shared';
 
 @Component({
-  selector: 'items',
-  template: `
-  <div class="mdl-grid items">
-    <div class="mdl-cell mdl-cell--6-col">
-      <items-list [items]="items"
-      (selected)="selectItem($event)" (deleted)="deleteItem($event)">
-      </items-list>
-    </div>
-    <div class="mdl-cell mdl-cell--6-col">
-      <item-detail
-      (saved)="saveItem($event)" (cancelled)="resetItem($event)"
-      [item]="selectedItem">
-        Select an Item
-      </item-detail>
-    </div>
-  </div>
-  `,
-  styles: [`
-    .items {
-      padding: 20px;
-    }
-  `],
-  providers: [ItemsService],
-  directives: [ItemsList, ItemDetail]
+  selector: 'app-items',
+  templateUrl: './items.component.html',
+  styleUrls: ['./items.component.css']
 })
-export class Items implements OnInit {
+export class ItemsComponent implements OnInit {
   items: Array<Item>;
   selectedItem: Item;
 
@@ -87,3 +64,4 @@ export class Items implements OnInit {
     this.resetItem();
   }
 }
+

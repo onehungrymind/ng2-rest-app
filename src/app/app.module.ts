@@ -4,17 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Ng2RestAppRoutingModule } from './app-routing.module';
 
+import { ItemsService } from './shared';
+
 import { AppComponent } from './app.component';
-import { Items } from './items/items.component';
-import { ItemsList } from './items/items-list.component';
-import { ItemDetail } from './items/item-detail.component';
+import { ItemsComponent } from './items/items.component';
+import { ItemsListComponent } from './items/items-list/items-list.component';
+import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    Items,
-    ItemsList,
-    ItemDetail
+    ItemsComponent,
+    ItemsListComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,7 @@ import { ItemDetail } from './items/item-detail.component';
     HttpModule,
     Ng2RestAppRoutingModule
   ],
-  providers: [],
+  providers: [ItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

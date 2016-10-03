@@ -1,0 +1,14 @@
+<div class="mdl-grid items">
+  <div class="mdl-cell mdl-cell--6-col">
+    <app-items-list [items]="items"
+                (selected)="selectItem($event)" (deleted)="deleteItem($event)">
+    </app-items-list>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col">
+    <app-item-detail
+      (saved)="saveItem($event)" (cancelled)="resetItem($event)"
+      [item]="selectedItem">
+      Select an Item
+    </app-item-detail>
+  </div>
+</div>
