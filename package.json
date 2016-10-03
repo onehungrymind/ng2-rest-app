@@ -4,7 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve",
+    "start": "concurrently \"npm run server\" \"ng serve\"",
+    "server": "json-server --watch server/api/db.json",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
@@ -21,6 +22,7 @@
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
     "core-js": "^2.4.1",
+    "json-server": "^0.8.21",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
@@ -29,6 +31,7 @@
     "@types/jasmine": "^2.2.30",
     "angular-cli": "1.0.0-beta.16",
     "codelyzer": "~0.0.26",
+    "concurrently": "^3.1.0",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
