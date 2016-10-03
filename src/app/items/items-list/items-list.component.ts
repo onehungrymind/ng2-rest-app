@@ -1,5 +1,5 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {Item} from '../../shared';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Item } from '../../shared';
 
 @Component({
   selector: 'app-items-list',

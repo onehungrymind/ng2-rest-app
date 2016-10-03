@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemsService, Item} from '../shared';
+import { ItemsService, Item } from '../shared';
 
 @Component({
   selector: 'app-items',
@@ -14,9 +14,7 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
     this.itemsService.loadItems()
-      .then(items => {
-        this.items = items;
-      });
+      .then(items => this.items = items);
   }
 
   resetItem() {
