@@ -1,0 +1,8 @@
+/* Form validation styles
+.ng-invalid:not(form) {
+    border-bottom: 1px solid red;
+}
+.ng-valid:not(form) {
+    border-bottom: 1px solid green;
+}
+*/
