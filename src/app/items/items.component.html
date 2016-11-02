@@ -1,8 +1,12 @@
 <div class="mdl-grid items">
+  <div class="mdl-cell mdl-cell--12-col">
+    <router-outlet></router-outlet>
+  </div>
   <div class="mdl-cell mdl-cell--6-col">
     <app-items-list [items]="items"
                     (selected)="selectItem($event)"
-                    (deleted)="deleteItem($event)">
+                    (deleted)="deleteItem($event)"
+                    (featured)="setItemAsFeatured($event)">
     </app-items-list>
   </div>
   <div class="mdl-cell mdl-cell--6-col">

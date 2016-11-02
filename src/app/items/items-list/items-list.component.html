@@ -7,6 +7,10 @@
     {{item.description}}
   </div>
   <div class="mdl-card__menu">
+    <button (click)="featured.emit(item); $event.stopPropagation();" [ngClass]="{'mdl-button--accent': item.featured}"
+            class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect featured">
+      <i class="material-icons">grade</i>
+    </button>
     <button (click)="deleted.emit(item); $event.stopPropagation();"
             class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
       <i class="material-icons">close</i>

@@ -1,0 +1,3 @@
+.featured:not(.mdl-button--accent) {
+  color: lightgray;
+}

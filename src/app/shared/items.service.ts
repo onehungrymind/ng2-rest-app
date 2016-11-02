@@ -17,6 +17,12 @@ export class ItemsService {
       .toPromise();
   }
 
+  loadItem(id) {
+    return this.http.get(`${BASE_URL}${id}`)
+      .map(res => res.json())
+      .toPromise();
+  }
+
   saveItem(item: Item) {
     return (item.id) ? this.updateItem(item) : this.createItem(item);
   }
@@ -28,7 +34,7 @@ export class ItemsService {
   }
 
   updateItem(item: Item) {
-    return this.http.put(`${BASE_URL}${item.id}`, JSON.stringify(item), HEADER)
+    return this.http.patch(`${BASE_URL}${item.id}`, JSON.stringify(item), HEADER)
       .map(res => res.json())
       .toPromise();
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService, Item } from '../shared';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-items',
@@ -10,11 +11,30 @@ export class ItemsComponent implements OnInit {
   items: Array<Item>;
   selectedItem: Item;
 
-  constructor(private itemsService: ItemsService) {}
+  constructor(
+    private itemsService: ItemsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.itemsService.loadItems()
-      .then(items => this.items = items);
+      .then(items => this.items = items)
+      .then(this.diffFeaturedItems.bind(this));
+  }
+
+  // diffFeaturedItems handles the case where one item is set as featured in the database,
+  // but the user browses to another featured item manually using the URL bar
+  diffFeaturedItems(items: Item[]) {
+    const supposedlyFeaturedID = this.route.snapshot.firstChild.params['id'];
+
+    if (supposedlyFeaturedID) {
+      let supposedlyFeaturedItem = items.find(item => item.id === +supposedlyFeaturedID);
+
+      if (!supposedlyFeaturedItem.featured) {
+        this.setItemAsFeatured(supposedlyFeaturedItem);
+      }
+    }
   }
 
   resetItem() {
@@ -61,5 +81,24 @@ export class ItemsComponent implements OnInit {
     // before resetting the current item.
     this.resetItem();
   }
+
+  unsetFeaturedItem() {
+    const featured = this.items.find(item => item.featured);
+
+    if (featured) {
+      this.saveItem(Object.assign({}, featured, {featured: false}));
+    }
+  }
+
+  setItemAsFeatured(item: Item) {
+    this.unsetFeaturedItem();
+
+    item.featured = true;
+
+    this.saveItem(item);
+
+    this.router.navigate(['featured', item.id], {relativeTo: this.route});
+  }
+
 }
 

@@ -10,4 +10,5 @@ export class ItemsListComponent {
   @Input() items: Item[];
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
+  @Output() featured = new EventEmitter();
 }
