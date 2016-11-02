@@ -9,7 +9,7 @@
     },
     {
       "id": 2,
-      "img": "assets/img/number-2-blue-icon.png",
+      "img": "number-2-blue-icon.png",
       "name": "Item 2",
       "description": "This is a description!",
       "featured": true
