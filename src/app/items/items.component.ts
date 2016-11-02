@@ -92,10 +92,8 @@ export class ItemsComponent implements OnInit {
 
   setItemAsFeatured(item: Item) {
     this.unsetFeaturedItem();
-
-    item.featured = true;
-
-    this.saveItem(item);
+    
+    this.saveItem(Object.assign({}, item, {featured: true}));
 
     this.router.navigate(['featured', item.id], {relativeTo: this.route});
   }
