@@ -1,20 +1,23 @@
 /* tslint:disable:no-unused-variable */
 
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
+import { Http } from '@angular/http';
 
 import { ItemsService } from './items.service';
-import xit = testing.xit;
+
+class HttpStub {}
 
 describe('Service: Items', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        ItemsService
+        ItemsService,
+        {provide: Http, useClass: HttpStub}
       ]
     });
   });
 
-  // it('should ...', inject([ItemsService], (service: ItemsService) => {
-  //   expect(service).toBeTruthy();
-  // }));
+  it('should exist', inject([ItemsService], (service: ItemsService) => {
+    expect(service).toBeTruthy();
+  }));
 });
