@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService, Item } from '../shared';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-items',
@@ -92,7 +92,7 @@ export class ItemsComponent implements OnInit {
 
   setItemAsFeatured(item: Item) {
     this.unsetFeaturedItem();
-    
+
     this.saveItem(Object.assign({}, item, {featured: true}));
 
     this.router.navigate(['featured', item.id], {relativeTo: this.route});

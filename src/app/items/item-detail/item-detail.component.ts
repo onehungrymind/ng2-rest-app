@@ -13,7 +13,7 @@ export class ItemDetailComponent {
   @Output() cancelled = new EventEmitter();
 
   @Input() set item(value: Item){
-    if (value) this.originalName = value.name;
+    if (value) { this.originalName = value.name; }
     this.selectedItem = Object.assign({}, value);
   }
 }
