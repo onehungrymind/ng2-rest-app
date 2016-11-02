@@ -18,7 +18,7 @@ export class FeaturedComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       this.itemsService.loadItem(params['id'])
-        .then(item => this.item = item);
+        .subscribe(item => this.item = item);
     });
   }
 

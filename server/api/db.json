@@ -2,18 +2,21 @@
   "items": [
     {
       "id": 1,
+      "img": "number-1.png",
       "name": "Item 1",
       "description": "This is a description",
-      "featured": true
-    },
-    {
-      "id": 2,
-      "name": "Item 2",
-      "description": "This is a description!",
       "featured": false
     },
     {
+      "id": 2,
+      "img": "assets/img/number-2-blue-icon.png",
+      "name": "Item 2",
+      "description": "This is a description!",
+      "featured": true
+    },
+    {
       "id": 3,
+      "img": "number-3-icon.png",
       "name": "Item 3",
       "description": "This is a lovely item",
       "featured": false

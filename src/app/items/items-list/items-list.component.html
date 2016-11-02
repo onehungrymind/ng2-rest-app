@@ -1,10 +1,13 @@
 <div *ngFor="let item of items" (click)="selected.emit(item)"
      class="item-card mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text">{{item.name}}</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    {{item.description}}
+  <img [src]="item.img" [alt]="item.name" width="100" height="100">
+  <div>
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">{{item.name}}</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      {{item.description}}
+    </div>
   </div>
   <div class="mdl-card__menu">
     <button (click)="featured.emit(item); $event.stopPropagation();" [ngClass]="{'mdl-button--accent': item.featured}"

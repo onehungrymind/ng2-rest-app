@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 const BASE_URL = 'http://localhost:3000/items/';
+const IMG_URL = 'assets/img/';
 const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
 @Injectable()
@@ -14,13 +15,12 @@ export class ItemsService {
   loadItems() {
     return this.http.get(BASE_URL)
       .map(res => res.json())
-      .toPromise();
+      .map(items => items.map(item => Object.assign({}, item, {img: `${IMG_URL}${item.img}`})));
   }
 
   loadItem(id) {
     return this.http.get(`${BASE_URL}${id}`)
-      .map(res => res.json())
-      .toPromise();
+      .map(res => res.json());
   }
 
   saveItem(item: Item) {
@@ -29,19 +29,16 @@ export class ItemsService {
 
   createItem(item: Item) {
     return this.http.post(`${BASE_URL}`, JSON.stringify(item), HEADER)
-      .map(res => res.json())
-      .toPromise();
+      .map(res => res.json());
   }
 
   updateItem(item: Item) {
     return this.http.patch(`${BASE_URL}${item.id}`, JSON.stringify(item), HEADER)
-      .map(res => res.json())
-      .toPromise();
+      .map(res => res.json());
   }
 
   deleteItem(item: Item) {
     return this.http.delete(`${BASE_URL}${item.id}`)
-      .map(res => res.json())
-      .toPromise();
+      .map(res => res.json());
   }
 }

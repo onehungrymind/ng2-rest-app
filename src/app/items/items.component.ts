@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ItemsService, Item } from '../shared';
 import { Router, ActivatedRoute } from '@angular/router';
+// import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-items',
@@ -19,8 +20,8 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
     this.itemsService.loadItems()
-      .then(items => this.items = items)
-      .then(this.diffFeaturedItems.bind(this));
+      .map(items => this.items = items)
+      .subscribe(this.diffFeaturedItems.bind(this));
   }
 
   // diffFeaturedItems handles the case where one item is set as featured in the database,
@@ -48,7 +49,7 @@ export class ItemsComponent implements OnInit {
 
   saveItem(item: Item) {
     this.itemsService.saveItem(item)
-      .then(responseItem => {
+      .subscribe(responseItem => {
         if (item.id) {
           this.replaceItem(responseItem);
         } else {
@@ -73,7 +74,7 @@ export class ItemsComponent implements OnInit {
 
   deleteItem(item: Item) {
     this.itemsService.deleteItem(item)
-      .then(() => {
+      .subscribe(() => {
         this.items.splice(this.items.indexOf(item), 1);
       });
 
