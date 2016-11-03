@@ -4,10 +4,7 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { WidgetsComponent } from './widgets.component';
-import { WidgetsService } from '../shared';
 import { RouterOutletStubComponent, RouterStub, ActivatedRouteStub } from '../testing';
-
-class WidgetsServiceStub {}
 
 let comp: WidgetsComponent;
 let fixture: ComponentFixture<WidgetsComponent>;
@@ -20,7 +17,6 @@ describe('Component: Items', () => {
         WidgetsComponent
       ],
       providers: [
-        {provide: WidgetsService, useClass: WidgetsServiceStub},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub},
         {provide: Router, useClass: RouterStub},
       ]
