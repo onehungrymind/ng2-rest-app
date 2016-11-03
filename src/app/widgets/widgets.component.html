@@ -1,33 +1,12 @@
 <div class="mdl-grid items">
-  <div class="mdl-cell mdl-cell--6-col">
-    <div *ngFor="let widget of widgets" (click)="selectWidget(widget)"
-         class="item-card mdl-card mdl-shadow--2dp">
-      <div>
-        <div class="mdl-card__title">
-          <h2 class="mdl-card__title-text">{{widget.name}}</h2>
-        </div>
-        <div class="mdl-card__supporting-text">
-          {{widget.description}}
-        </div>
-      </div>
-      <div class="mdl-card__menu">
-        <button (click)="deleteWidget(widget); $event.stopPropagation();"
-                class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-          <i class="material-icons">close</i>
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="mdl-cell mdl-cell--6-col">
+  <div class="mdl-cell mdl-cell--61-col">
     <div class="item-card mdl-card mdl-shadow--2dp">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text" *ngIf="selectedWidget?.id">{{selectedWidget?.name}}</h2>
-        <h2 class="mdl-card__title-text" *ngIf="!selectedWidget?.id">Select a Widget</h2>
+        <h2 class="mdl-card__title-text">Widgets</h2>
       </div>
       <div class="mdl-card__supporting-text">
-        <h6>{{selectedWidget?.description}}</h6>
+        <pre>{{widgets | json}}</pre>
       </div>
     </div>
-
   </div>
 </div>
