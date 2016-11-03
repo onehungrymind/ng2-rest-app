@@ -1,0 +1,11 @@
+.item-card {
+  align-items: center;
+  cursor: auto;
+}
+h3 {
+  margin: 0;
+  font-weight:lighter;
+}
+small {
+  align-self: center;
+}

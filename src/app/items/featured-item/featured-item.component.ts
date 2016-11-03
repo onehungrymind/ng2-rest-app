@@ -3,11 +3,11 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { ItemsService, Item } from '../../shared';
 
 @Component({
-  selector: 'app-featured',
-  templateUrl: './featured.component.html',
-  styleUrls: ['./featured.component.css']
+  selector: 'app-featured-item',
+  templateUrl: './featured-item.component.html',
+  styleUrls: ['./featured-item.component.css']
 })
-export class FeaturedComponent implements OnInit {
+export class FeaturedItemComponent implements OnInit {
   item: Item;
 
   constructor(

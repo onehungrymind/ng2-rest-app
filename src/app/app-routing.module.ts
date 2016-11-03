@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ItemsComponent } from './items/items.component';
-import { FeaturedComponent } from './items/featured/featured.component';
+import { WidgetsComponent } from './widgets/widgets.component';
+import { FeaturedItemComponent } from './items/featured-item/featured-item.component';
+import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widget.component';
 
 const routes: Routes = [
   {path: '',      redirectTo: '/items', pathMatch: 'full' },
   {path: 'items', component: ItemsComponent, children: [
     {path: ''},
-    {path: 'featured/:id', component: FeaturedComponent}
+    {path: 'featured/:id', component: FeaturedItemComponent}
+  ]},
+  {path: 'widgets', component: WidgetsComponent, children: [
+    {path: ''},
+    {path: 'featured/:id', component: FeaturedWidgetComponent}
   ]},
   {path: '*',     component: ItemsComponent }
 ];

@@ -24,8 +24,8 @@ export class ItemsComponent implements OnInit {
       .subscribe(this.diffFeaturedItems.bind(this));
   }
 
-  // diffFeaturedItems handles the case where one item is set as featured in the database,
-  // but the user browses to another featured item manually using the URL bar
+  // diffFeaturedItems handles the case where one item is set as featured-item in the database,
+  // but the user browses to another featured-item item manually using the URL bar
   diffFeaturedItems(items: Item[]) {
     const supposedlyFeaturedID = this.route.snapshot.firstChild.params['id'];
 

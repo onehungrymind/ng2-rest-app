@@ -3,25 +3,25 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { ActivatedRouteStub } from '../../testing';
-import { FeaturedComponent } from './featured.component';
-import { ItemsService } from '../../shared';
+import { FeaturedWidgetComponent } from './featured-widget.component';
+import { WidgetsService } from '../../shared';
 
-class ItemsServiceStub {}
+class WidgetsServiceStub {}
 
-let comp: FeaturedComponent;
-let fixture: ComponentFixture<FeaturedComponent>;
+let comp: FeaturedWidgetComponent;
+let fixture: ComponentFixture<FeaturedWidgetComponent>;
 
 describe('Component: Featured', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeaturedComponent ],
+      declarations: [ FeaturedWidgetComponent ],
       providers: [
-        {provide: ItemsService, useClass: ItemsServiceStub},
+        {provide: WidgetsService, useClass: WidgetsServiceStub},
         {provide: ActivatedRoute, useClass: ActivatedRouteStub}
       ]
     });
 
-    fixture = TestBed.createComponent(FeaturedComponent);
+    fixture = TestBed.createComponent(FeaturedWidgetComponent);
     comp = fixture.componentInstance;
   });
 
