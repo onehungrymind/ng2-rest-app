@@ -12,7 +12,6 @@ import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { FeaturedItemComponent } from './items/featured-item/featured-item.component';
 import { WidgetsComponent } from './widgets/widgets.component';
-import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widget.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,6 @@ import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widg
     ItemDetailComponent,
     FeaturedItemComponent,
     WidgetsComponent,
-    FeaturedWidgetComponent
   ],
   imports: [
     BrowserModule,

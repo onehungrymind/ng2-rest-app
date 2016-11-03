@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WidgetsService, Widget } from '../shared';
-import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-widgets',
@@ -12,28 +11,11 @@ export class WidgetsComponent implements OnInit {
   selectedWidget: Widget;
 
   constructor(
-    private widgetsService: WidgetsService,
-    private router: Router,
-    private route: ActivatedRoute
+    private widgetsService: WidgetsService
   ) {}
 
   ngOnInit() {
     this.widgets = this.widgetsService.loadWidgets();
-    this.diffFeaturedWidgets(this.widgets);
-  }
-
-  // diffFeaturedWidgets handles the case where one widget is set as featured-item in the database,
-  // but the user browses to another featured-item widget manually using the URL bar
-  diffFeaturedWidgets(widgets: Widget[]) {
-    const supposedlyFeaturedID = this.route.snapshot.firstChild.params['id'];
-
-    if (supposedlyFeaturedID) {
-      let supposedlyFeaturedWidget = widgets.find(widget => widget.id === +supposedlyFeaturedID);
-
-      if (!supposedlyFeaturedWidget.featured) {
-        this.setWidgetAsFeatured(supposedlyFeaturedWidget);
-      }
-    }
   }
 
   resetWidget() {
@@ -45,22 +27,6 @@ export class WidgetsComponent implements OnInit {
     this.selectedWidget = widget;
   }
 
-  saveWidget(widget: Widget) {
-    const responseWidget = this.widgetsService.saveWidget(widget);
-
-    this.replaceWidget(responseWidget);
-
-    // Generally, we would want to wait for the result of `widgetsService.saveWidget`
-    // before resetting the current widget.
-    this.resetWidget();
-  }
-
-  replaceWidget(widget: Widget) {
-    this.widgets = this.widgets.map(mapWidget => {
-      return mapWidget.id === widget.id ? widget : mapWidget;
-    });
-  }
-
   deleteWidget(widget: Widget) {
     this.widgetsService.deleteWidget(widget);
     this.widgets.splice(this.widgets.indexOf(widget), 1);
@@ -68,22 +34,6 @@ export class WidgetsComponent implements OnInit {
     // Generally, we would want to wait for the result of `widgetsService.deleteWidget`
     // before resetting the current widget.
     this.resetWidget();
-  }
-
-  unsetFeaturedWidget() {
-    const featured = this.widgets.find(widget => widget.featured);
-
-    if (featured) {
-      this.saveWidget(Object.assign({}, featured, {featured: false}));
-    }
-  }
-
-  setWidgetAsFeatured(widget: Widget) {
-    this.unsetFeaturedWidget();
-
-    this.saveWidget(Object.assign({}, widget, {featured: true}));
-
-    this.router.navigate(['featured', widget.id], {relativeTo: this.route});
   }
 
 }
