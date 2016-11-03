@@ -14,8 +14,7 @@ export class WidgetsService {
 
   loadWidgets() {
     return this.http.get(BASE_URL)
-      .map(res => res.json())
-      .map(widgets => widgets.map(widget => Object.assign({}, widget, {img: `${IMG_URL}${widget.img}`})));
+      .map(res => res.json());
   }
 
   loadWidget(id) {
@@ -33,11 +32,8 @@ export class WidgetsService {
   }
 
   updateWidget(widget: Widget) {
-    delete widget.img;
-
     return this.http.patch(`${BASE_URL}${widget.id}`, JSON.stringify(widget), HEADER)
-      .map(res => res.json())
-      .map(w => Object.assign({}, w, {img: `${IMG_URL}${w.img}`}));
+      .map(res => res.json());
   }
 
   deleteWidget(widget: Widget) {
