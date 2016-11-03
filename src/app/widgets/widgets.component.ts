@@ -48,11 +48,7 @@ export class WidgetsComponent implements OnInit {
   saveWidget(widget: Widget) {
     const responseWidget = this.widgetsService.saveWidget(widget);
 
-    if (widget.id) {
-      this.replaceWidget(responseWidget);
-    } else {
-      this.pushWidget(responseWidget);
-    }
+    this.replaceWidget(responseWidget);
 
     // Generally, we would want to wait for the result of `widgetsService.saveWidget`
     // before resetting the current widget.
@@ -63,10 +59,6 @@ export class WidgetsComponent implements OnInit {
     this.widgets = this.widgets.map(mapWidget => {
       return mapWidget.id === widget.id ? widget : mapWidget;
     });
-  }
-
-  pushWidget(widget: Widget) {
-    this.widgets.push(widget);
   }
 
   deleteWidget(widget: Widget) {
