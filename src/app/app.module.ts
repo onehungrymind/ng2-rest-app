@@ -11,7 +11,6 @@ import { ItemsComponent } from './items/items.component';
 import { ItemsListComponent } from './items/items-list/items-list.component';
 import { ItemDetailComponent } from './items/item-detail/item-detail.component';
 import { FeaturedItemComponent } from './items/featured-item/featured-item.component';
-import { WidgetsComponent } from './widgets/widgets.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +18,7 @@ import { WidgetsComponent } from './widgets/widgets.component';
     ItemsComponent,
     ItemsListComponent,
     ItemDetailComponent,
-    FeaturedItemComponent,
-    WidgetsComponent,
+    FeaturedItemComponent
   ],
   imports: [
     BrowserModule,
