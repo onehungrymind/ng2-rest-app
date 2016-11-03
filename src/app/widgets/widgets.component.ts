@@ -18,9 +18,8 @@ export class WidgetsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.widgetsService.loadWidgets()
-      .map(widgets => this.widgets = widgets)
-      .subscribe(this.diffFeaturedWidgets.bind(this));
+    this.widgets = this.widgetsService.loadWidgets();
+    this.diffFeaturedWidgets(this.widgets);
   }
 
   // diffFeaturedWidgets handles the case where one widget is set as featured-item in the database,
@@ -47,14 +46,13 @@ export class WidgetsComponent implements OnInit {
   }
 
   saveWidget(widget: Widget) {
-    this.widgetsService.saveWidget(widget)
-      .subscribe(responseWidget => {
-        if (widget.id) {
-          this.replaceWidget(responseWidget);
-        } else {
-          this.pushWidget(responseWidget);
-        }
-      });
+    const responseWidget = this.widgetsService.saveWidget(widget);
+
+    if (widget.id) {
+      this.replaceWidget(responseWidget);
+    } else {
+      this.pushWidget(responseWidget);
+    }
 
     // Generally, we would want to wait for the result of `widgetsService.saveWidget`
     // before resetting the current widget.
@@ -72,10 +70,8 @@ export class WidgetsComponent implements OnInit {
   }
 
   deleteWidget(widget: Widget) {
-    this.widgetsService.deleteWidget(widget)
-      .subscribe(() => {
-        this.widgets.splice(this.widgets.indexOf(widget), 1);
-      });
+    this.widgetsService.deleteWidget(widget);
+    this.widgets.splice(this.widgets.indexOf(widget), 1);
 
     // Generally, we would want to wait for the result of `widgetsService.deleteWidget`
     // before resetting the current widget.

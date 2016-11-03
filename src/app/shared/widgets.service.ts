@@ -1,24 +1,18 @@
-import { Http, Headers } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Widget } from './widget.model';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
-
-const BASE_URL = 'http://localhost:3000/widgets/';
-const HEADER = { headers: new Headers({ 'Content-Type': 'application/json' }) };
+import { Widget, widgets } from './widget.model';
 
 @Injectable()
 export class WidgetsService {
-  constructor(private http: Http) {}
+  widgets: Widget[] = widgets;
+
+  constructor() {}
 
   loadWidgets() {
-    return this.http.get(BASE_URL)
-      .map(res => res.json());
+    return [...this.widgets];
   }
 
   loadWidget(id) {
-    return this.http.get(`${BASE_URL}${id}`)
-      .map(res => res.json());
+    return this.widgets.find(widget => widget.id === +id);
   }
 
   saveWidget(widget: Widget) {
@@ -26,17 +20,20 @@ export class WidgetsService {
   }
 
   createWidget(widget: Widget) {
-    return this.http.post(`${BASE_URL}`, JSON.stringify(widget), HEADER)
-      .map(res => res.json());
+    this.widgets = [...this.widgets, widget];
+    return widget;
   }
 
   updateWidget(widget: Widget) {
-    return this.http.patch(`${BASE_URL}${widget.id}`, JSON.stringify(widget), HEADER)
-      .map(res => res.json());
+    this.widgets = this.widgets.map(w => {
+      return w.id === widget.id ? widget : w;
+    });
+
+    return widget;
   }
 
   deleteWidget(widget: Widget) {
-    return this.http.delete(`${BASE_URL}${widget.id}`)
-      .map(res => res.json());
+    this.widgets = this.widgets.filter(w => w.id !== widget.id);
+    return widget;
   }
 }
