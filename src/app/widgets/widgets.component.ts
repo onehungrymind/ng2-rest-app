@@ -19,8 +19,10 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit() {
     this.widgetsService.loadWidgets()
-      .map(widgets => this.widgets = widgets)
-      .subscribe(this.diffFeaturedWidgets.bind(this));
+      .subscribe(widgets => {
+        this.widgets = widgets;
+        this.diffFeaturedWidgets(widgets);
+      });
   }
 
   // diffFeaturedWidgets handles the case where one widget is set as featured-item in the database,
