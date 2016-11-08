@@ -9,7 +9,7 @@ const routes: Routes = [
     {path: ''},
     {path: 'featured/:id', component: FeaturedItemComponent}
   ]},
-  {path: '*',     component: ItemsComponent }
+  {path: '**',     redirectTo: '/items', pathMatch: 'full'}
 ];
 
 @NgModule({
