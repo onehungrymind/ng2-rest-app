@@ -20,8 +20,10 @@ export class ItemsComponent implements OnInit {
 
   ngOnInit() {
     this.itemsService.loadItems()
-      .map(items => this.items = items)
-      .subscribe(this.diffFeaturedItems.bind(this));
+      .subscribe(items => {
+        this.items = items
+        this.diffFeaturedItems(items);
+      });
   }
 
   // diffFeaturedItems handles the case where one item is set as featured-item in the database,
