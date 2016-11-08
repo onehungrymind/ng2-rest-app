@@ -11,7 +11,7 @@ const routes: Routes = [
     {path: 'featured/:id', component: FeaturedItemComponent}
   ]},
   {path: 'widgets', component: WidgetsComponent},
-  {path: '*',     component: ItemsComponent }
+  {path: '**',     redirectTo: '/items', pathMatch: 'full'}
 ];
 
 @NgModule({
