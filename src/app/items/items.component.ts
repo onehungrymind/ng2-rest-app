@@ -21,7 +21,7 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {
     this.itemsService.loadItems()
       .subscribe(items => {
-        this.items = items
+        this.items = items;
         this.diffFeaturedItems(items);
       });
   }
