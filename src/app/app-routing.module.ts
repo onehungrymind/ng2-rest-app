@@ -8,11 +8,9 @@ import { FeaturedWidgetComponent } from './widgets/featured-widget/featured-widg
 const routes: Routes = [
   {path: '',      redirectTo: '/items', pathMatch: 'full' },
   {path: 'items', component: ItemsComponent, children: [
-    {path: ''},
     {path: 'featured/:id', component: FeaturedItemComponent}
   ]},
   {path: 'widgets', component: WidgetsComponent, children: [
-    {path: ''},
     {path: 'featured/:id', component: FeaturedWidgetComponent}
   ]},
   {path: '**',     redirectTo: '/items', pathMatch: 'full'}
