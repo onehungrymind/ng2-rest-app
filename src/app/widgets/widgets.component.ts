@@ -19,7 +19,9 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit() {
     this.widgets = this.widgetsService.loadWidgets();
-    this.diffFeaturedWidgets(this.widgets);
+    if (this.route.snapshot.firstChild) {
+      this.diffFeaturedWidgets(this.widgets);
+    }
   }
 
   // diffFeaturedWidgets handles the case where one widget is set as featured-item in the database,
