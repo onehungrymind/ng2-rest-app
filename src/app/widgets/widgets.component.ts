@@ -21,7 +21,10 @@ export class WidgetsComponent implements OnInit {
     this.widgetsService.loadWidgets()
       .subscribe(widgets => {
         this.widgets = widgets;
-        this.diffFeaturedWidgets(widgets);
+
+        if (this.route.snapshot.firstChild) {
+          this.diffFeaturedWidgets(widgets);
+        }
       });
   }
 
