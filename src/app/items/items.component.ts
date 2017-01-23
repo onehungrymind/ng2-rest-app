@@ -22,7 +22,9 @@ export class ItemsComponent implements OnInit {
     this.itemsService.loadItems()
       .subscribe(items => {
         this.items = items;
-        this.diffFeaturedItems(items);
+        if (this.route.snapshot.firstChild) {
+          this.diffFeaturedItems(items);
+        }
       });
   }
 
