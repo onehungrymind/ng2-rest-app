@@ -62,22 +62,5 @@ export class WidgetsComponent implements OnInit {
     // before resetting the current widget.
     this.resetWidget();
   }
-
-  unsetFeaturedWidget() {
-    const featured = this.widgets.find(widget => widget.featured);
-
-    if (featured) {
-      this.saveWidget(Object.assign({}, featured, {featured: false}));
-    }
-  }
-
-  setWidgetAsFeatured(widget: Widget) {
-    this.unsetFeaturedWidget();
-
-    this.saveWidget(Object.assign({}, widget, {featured: true}));
-
-    this.router.navigate(['featured', widget.id], {relativeTo: this.route});
-  }
-
 }
 
